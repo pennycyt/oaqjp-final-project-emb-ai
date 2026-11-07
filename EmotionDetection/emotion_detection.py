@@ -9,10 +9,10 @@ def emotion_detector(text_to_analyze):
     formatted_response = json.loads(response.text)
     emotions = formatted_response['emotionPredictions'][0]['emotion']
     score = 0
-    for emotion in emotions.keys():
-        if emotions[emotion] > score:
-            score = emotions[emotion]
-            dominant_emotion = emotion
+    for key, value in emotions:
+        if value > score:
+            score = value
+            dominant_emotion = key
     emotions['dominant_emotion'] = dominant_emotion
     
     return emotions
