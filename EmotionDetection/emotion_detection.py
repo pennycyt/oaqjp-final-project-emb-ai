@@ -14,5 +14,9 @@ def emotion_detector(text_to_analyze):
             score = value
             dominant_emotion = key
     emotions['dominant_emotion'] = dominant_emotion
+
+    if response.status_code == 400:
+        for emotion in emotions.keys():
+            emotions[emotion] = 'None' 
     
     return emotions
